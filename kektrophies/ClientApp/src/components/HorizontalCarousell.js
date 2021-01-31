@@ -43,8 +43,8 @@ const HorizontalCarousell = React.memo((props) => {
             }
         }
 
-        setStartIndex(startIndex, maxItems);
-        _setMaxItemsToDisplay(maxItems);
+        setStartIndex(startIndex, maxToDisplay);
+        _setMaxItemsToDisplay(maxToDisplay);
     }, [setStartIndex, props]);
     
     return (
