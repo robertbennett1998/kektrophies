@@ -26,7 +26,7 @@ namespace kektrophies
             services.AddCors();
             // #endif
         
-            services.AddControllersWithViews();
+            services.AddControllers();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddDbContext<DatabaseContext>();
             services.AddTransient<ITestimonialsService, TestimonialsService>();
@@ -71,9 +71,7 @@ namespace kektrophies
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
 
             app.UseSpa(spa =>
