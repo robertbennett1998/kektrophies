@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 name: 🚀 Deploy Website on PR into master
 jobs:
