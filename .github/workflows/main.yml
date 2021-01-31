@@ -24,6 +24,13 @@ jobs:
     - name: Publish
       run: dotnet publish ./kektrophies/kektrophies.csproj -o ./publish -f netcoreapp3.1	-r win-x64 -c release -p:PublishReadyToRun=true --self-contained true 
       
+    - name: Save the Published files
+      uses: actions/upload-artifact@v2
+      if: ${{always()}}
+      with:
+        name: 'publish'
+        path: ${{github.workspace}}/publish/
+      
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
