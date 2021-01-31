@@ -23,12 +23,7 @@ namespace kektrophies
         public void ConfigureServices(IServiceCollection services)
         {
             // #if DEBUG
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-            {
-                builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-            }));
+            services.AddCors();
             // #endif
         
             services.AddControllersWithViews();
@@ -57,7 +52,13 @@ namespace kektrophies
             }
 
             // #if DEBUG
-            app.UseCors("MyPolicy");
+            app.UseCors(opts =>
+            {
+                opts.AllowAnyOrigin();
+                opts.AllowAnyHeader();
+                opts.AllowAnyMethod();
+                opts.WithExposedHeaders("X-Operation");
+            });
             // #endif                        
             
             app.UseHttpsRedirection();
