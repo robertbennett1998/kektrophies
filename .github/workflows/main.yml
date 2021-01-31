@@ -7,7 +7,7 @@ on:
     branches:
       - master
 
-name: 🚀 Deploy website on push
+name: 🚀 Deploy Website on PR into master
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -39,4 +39,7 @@ jobs:
         password: ${{secrets.ftp_password}}
         protocol: ftp
         local-dir: ./publish/
-        dangerous-clean-slate: true 
+        exclude: 
+          - **/web.config
+          - **/appsettings.json 
+          - **/appsettings.Development.json
