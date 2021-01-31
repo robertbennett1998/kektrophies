@@ -2,7 +2,7 @@ import React from 'react';
 import BodyContainer from '../components/BodyContainer';
 import BodyItem from '../components/BodyItem';
 
-function WelcomeView({}) {  
+function WelcomeView() {  
     return (
               <div id="welcome_view">
                 <h1>
