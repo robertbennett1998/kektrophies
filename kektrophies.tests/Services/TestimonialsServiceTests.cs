@@ -29,7 +29,7 @@ namespace kektrophies.tests.Services
                 .EnableSensitiveDataLogging()
                 .Options;
 
-            _databaseContext = new DatabaseContext(options);
+            _databaseContext = new DatabaseContext(null, options);
             _mocker.Use(_databaseContext);
         }
         
