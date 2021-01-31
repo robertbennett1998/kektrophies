@@ -22,14 +22,14 @@ namespace kektrophies
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            #if DEBUG
+            // #if DEBUG
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
-            #endif
+            // #endif
         
             services.AddControllersWithViews();
             services.AddSingleton<IConfiguration>(Configuration);
@@ -56,9 +56,9 @@ namespace kektrophies
                 app.UseHsts();
             }
 
-            #if DEBUG
+            // #if DEBUG
             app.UseCors("MyPolicy");
-            #endif                        
+            // #endif                        
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();
