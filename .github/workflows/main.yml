@@ -1,0 +1,41 @@
+# https://dev.to/kurtmkurtm/testing-net-core-apps-with-github-actions-3i76
+on: 
+  push:
+  pull_request:
+    branches:
+      - main
+      - test*
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: windows-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2.3.2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101    
+
+      # restore dependencies  
+    - name: Install dependencies
+      run: dotnet restore
+
+      # build project
+    - name: .Net Unit Tests
+      run: echo "Add unit test step"
+      #run: dotnet build --configuration release --no-restore
+        
+    - name: Publish
+      run: dotnet publish -o ./publish -r win-x64 -c release -p:PublishReadyToRun=true --self-contained true 
+      
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{ secrets.ftp_server }}
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
+        local-dir: ./publish/
+        dangerous-clean-slate: true 
