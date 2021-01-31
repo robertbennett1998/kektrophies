@@ -30,7 +30,7 @@ namespace kektrophies
                 #if DEBUG
                     optionsBuilder.UseSqlServer(_configuration.GetConnectionString("kektrophies_db")); //local
                 #else 
-                    optionsBuilder.UseMySQL(_configuration.GetConnectionString("kektrophies_db"))
+                    optionsBuilder.UseMySQL(_configuration.GetConnectionString("kektrophies_db"));
                 #endif
             }
         }
