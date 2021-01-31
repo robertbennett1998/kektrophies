@@ -1,5 +1,5 @@
 const Config = { 
-    apiPath : !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? "http://127.0.0.1:5000/api/" : "http://46.252.205.196/plesk-site-preview/kektrophies.co.uk/api/"
+    apiPath : !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? "http://127.0.0.1:5000/api/" : "http://kektrophies.co.uk/api/"
 }
 
 export default Config;
