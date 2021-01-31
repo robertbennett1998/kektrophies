@@ -84,7 +84,7 @@ function TestimonialsView() {
                     <BodyItem paper fill xs={12}>
                       <p>Thank you for taking the time to leave a testimonial.</p>
                       <form noValidate autoComplete="off">
-                        <TextField id="testimonial-code" required id="standard-basic" label="Code" value={code} onChange={(e) => setCode(e.target.value)} />
+                        <TextField id="testimonial-code" required label="Code" value={code} onChange={(e) => setCode(e.target.value)} />
                         <TextField required fullWidth multiline id="testimonial-testimonial" rows={6} rowsMax={12} label="Testimonial" value={testimonial} onChange={(e) => setTestimonial(e.target.value)} />
                         <div style={{"display": "flex", "justifyContent": "center", "alignItems": "center", "marginTop": "10px"}} >
                           <Button variant="outlined" style={{"marginRight": "5px"}} onClick={submitNewTestimonial}>Submit</Button>

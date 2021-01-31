@@ -45,7 +45,7 @@ const HorizontalCarousell = React.memo((props) => {
 
         setStartIndex(startIndex, maxToDisplay);
         _setMaxItemsToDisplay(maxToDisplay);
-    }, [setStartIndex, props]);
+    }, [setStartIndex, startIndex, props]);
     
     return (
                 <BodyContainer>
