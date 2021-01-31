@@ -1,3 +1,4 @@
+using kektrophies.Middleware;
 using kektrophies.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -64,6 +65,8 @@ namespace kektrophies
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseKekExceptionHandlerMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
