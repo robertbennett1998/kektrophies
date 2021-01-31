@@ -1,16 +1,23 @@
 ﻿using kektrophies.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace kektrophies
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext()
-        {
-        }
+        private readonly IConfiguration _configuration;
 
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
+        [ActivatorUtilitiesConstructor]
+        public DatabaseContext(IConfiguration configuration)
         {
+            _configuration = configuration;
+        }
+        
+        public DatabaseContext(IConfiguration configuration, DbContextOptions<DatabaseContext> options) : base(options)
+        {
+            _configuration = configuration;
         }
 
         public DbSet<TestimonialCodeModel> TestimonialCodes { get; set; }
@@ -20,7 +27,7 @@ namespace kektrophies
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=kektrophies;"); //local
+                optionsBuilder.UseSqlServer(_configuration.GetConnectionString("kektrophies_db")); //local
             }
         }
     }

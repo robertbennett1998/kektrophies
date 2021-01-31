@@ -31,6 +31,7 @@ namespace kektrophies
             #endif
         
             services.AddControllersWithViews();
+            services.AddSingleton<IConfiguration>(Configuration);
             services.AddDbContext<DatabaseContext>();
             services.AddTransient<ITestimonialsService, TestimonialsService>();
             services.AddSingleton<IPasswordService, PBKDF2PasswordService>();
