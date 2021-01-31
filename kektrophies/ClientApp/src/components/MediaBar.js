@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, ButtonGroup, Grid, IconButton, useMediaQuery } from '@material-ui/core';
+import { ButtonGroup, Grid, IconButton, useMediaQuery } from '@material-ui/core';
 
 function MediaBar({icons}) {
     var buttons = [];

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import withWidth from '@material-ui/core/withWidth';
-import { Button, Grid, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import BodyContainer from './BodyContainer';
 import BodyItem from './BodyItem';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
@@ -23,11 +23,6 @@ const HorizontalCarousell = React.memo((props) => {
         _setStartIndex(index);
     };
 
-    const setMaxItemsToDisplay = (maxItems) => {
-        setStartIndex(startIndex, maxItems);
-        _setMaxItemsToDisplay(maxItems);
-    };
-
     useEffect(() => {
         var maxToDisplay = 0;
         var exitOnSet = false;
@@ -48,15 +43,10 @@ const HorizontalCarousell = React.memo((props) => {
             }
         }
 
-        setMaxItemsToDisplay(maxToDisplay);
-    }, [setMaxItemsToDisplay, props]);
-
-    const a = () => {
-        if (props.data !== null && props.data !== undefined)
-        {
-            
-        }
-    }
+        setStartIndex(startIndex, maxItems);
+        _setMaxItemsToDisplay(maxItems);
+    }, [setStartIndex, props]);
+    
     return (
                 <BodyContainer>
                     <BodyItem xs={1}>

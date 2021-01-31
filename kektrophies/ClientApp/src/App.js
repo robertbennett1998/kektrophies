@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from './components/NavBar';
-import { Container, Grid, IconButton } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import MediaBar from './components/MediaBar';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import PhoneIcon from '@material-ui/icons/Phone';

@@ -2,7 +2,7 @@ import React from 'react';
 import BodyContainer from '../components/BodyContainer';
 import BodyItem from '../components/BodyItem';
 
-function ServicesView({}) {  
+function ServicesView() {  
     return (
               <div id="services_view">
                 <h1>

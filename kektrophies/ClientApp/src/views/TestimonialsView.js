@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import HorizontalCarousell from '../components/HorizontalCarousell';
 import Testimonial from '../components/Testimonial';
 import KekApi from '../KekApi';
-import { Button, TextField, IconButton, ButtonGroup } from '@material-ui/core';
+import { Button, TextField, IconButton } from '@material-ui/core';
 import BodyContainer from '../components/BodyContainer';
 import BodyItem from '../components/BodyItem';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-function TestimonialsView({}) {  
+function TestimonialsView() {  
     const sizeToMaxItemsToDisplayMap = { "xs": 1, "sm": 2, "md": 3, "lg": 4, "xl": 6 };
 
     const [testimonials, setTestimonials] = useState([]);
