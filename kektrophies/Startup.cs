@@ -1,3 +1,4 @@
+using kektrophies.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,6 +22,10 @@ namespace kektrophies
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<DatabaseContext>();
+            services.AddTransient<ITestimonialsService, TestimonialsService>();
+            services.AddSingleton<IPasswordService, PBKDF2PasswordService>();
+            services.AddSingleton<ICryptoService, CryptoService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });

@@ -12,6 +12,13 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.11" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.2">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
@@ -24,6 +31,16 @@
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
           <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="publish\web.config" />
+      <_ContentIncludedByDefault Remove="publish\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="publish\appsettings.json" />
+      <_ContentIncludedByDefault Remove="publish\ClientApp\build\asset-manifest.json" />
+      <_ContentIncludedByDefault Remove="publish\ClientApp\build\manifest.json" />
+      <_ContentIncludedByDefault Remove="publish\kektrophies.deps.json" />
+      <_ContentIncludedByDefault Remove="publish\kektrophies.runtimeconfig.json" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
