@@ -15,7 +15,7 @@ import CatalogueView from './views/CatalogueView';
 
 function App() {
   return (
-            <Container style={{ maxWidth: "1200px", height: "100%" }}>
+            <Container style={{ maxWidth: "1800px", height: "100%" }}>
               <Header>
                   <Grid container item justify="center" alignItems="center" xs={12} sm={12} md={3} style={{textAlign: "center"}}>
                     <img alt="" style={{ float: "left", width: "auto", maxWidth: "150px", height: "auto", minHeight: "75px"}} src="./kek_shield_icon.png" />

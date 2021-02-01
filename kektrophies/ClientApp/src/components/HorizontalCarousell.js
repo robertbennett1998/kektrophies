@@ -43,7 +43,7 @@ export class HorizontalCarousell extends React.Component
             let exitOnSet = false;
             const sizeKeys = ["xl", "lg", "md", "sm", "xs"];
 
-            console.log("Width", this.props.width);
+            // console.log("Width", this.props.width);
             for (const sizeKey of sizeKeys) {
                 if (sizeKey === this.props.width)
                     exitOnSet = true;
@@ -70,7 +70,7 @@ export class HorizontalCarousell extends React.Component
                         "justifyContent": "center",
                         "alignContent": "center"
                     }}>
-                        <IconButton style={{"transform": "scale(-2)"}} onClick={() => this.setStartIndex(this.state.startIndex - 1)}>
+                        <IconButton hidden={this.state.startIndex === 0} style={{"transform": "scale(-2)"}} onClick={() => this.setStartIndex(this.state.startIndex - 1)}>
                             <DoubleArrowIcon/>
                         </IconButton>
                     </div>
@@ -97,7 +97,7 @@ export class HorizontalCarousell extends React.Component
                         "alignContent": "center",
                         "float": "right"
                     }}>
-                        <IconButton style={{"transform": "scale(2)"}} onClick={() => this.setStartIndex(this.state.startIndex + 1)}>
+                        <IconButton hidden={this.state.startIndex + this.state.maxItemsToDisplay >= this.props.length} style={{"transform": "scale(2)"}} onClick={() => this.setStartIndex(this.state.startIndex + 1)}>
                             <DoubleArrowIcon/>
                         </IconButton>
                     </div>
