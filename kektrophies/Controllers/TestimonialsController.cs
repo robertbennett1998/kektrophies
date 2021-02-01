@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace kektrophies.Controllers
 {
     [Route("api/[controller]")]
-    public class TestimonialsController : Controller
+    [ApiController]
+    public class TestimonialsController : ControllerBase
     {
         private readonly ITestimonialsService _testimonialsService;
         private readonly IPasswordService _passwordService;
