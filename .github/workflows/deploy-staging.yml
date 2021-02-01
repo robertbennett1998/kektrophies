@@ -37,5 +37,7 @@ jobs:
         protocol: ftp
         local-dir: ./publish/
         exclude: web.config
+          - web.config
+          - Web.config
           - appsettings.json 
           - appsettings.Development.json
