@@ -62,47 +62,46 @@ export class HorizontalCarousell extends React.Component
     
     render() {
         return (
-            <BodyContainer>
-                <BodyItem xs={1}>
-                    <div style={{
-                        "height": "100%",
-                        "display": "inline-grid",
-                        "justifyContent": "center",
-                        "alignContent": "center"
-                    }}>
-                        <IconButton hidden={this.state.startIndex === 0} style={{"transform": "scale(-2)"}} onClick={() => this.setStartIndex(this.state.startIndex - 1)}>
-                            <DoubleArrowIcon/>
-                        </IconButton>
-                    </div>
-                </BodyItem>
-                <BodyItem xs={10}>
-                    <BodyContainer>
-                        {
-                            this.props.data?.map((data, index) => {
-                                if (index >= this.state.startIndex && index < this.state.startIndex + this.state.maxItemsToDisplay) {
-                                    //console.log("MAX", maxItemsToDisplay); 
-                                    return this.props.renderFunction(data, index);
-                                }
-    
-                                return undefined;
-                            })
-                        }
-                    </BodyContainer>
-                </BodyItem>
-                <BodyItem xs={1}>
-                    <div style={{
-                        "height": "100%",
-                        "display": "inline-grid",
-                        "justifyContent": "center",
-                        "alignContent": "center",
-                        "float": "right"
-                    }}>
-                        <IconButton hidden={this.state.startIndex + this.state.maxItemsToDisplay >= this.props.length} style={{"transform": "scale(2)"}} onClick={() => this.setStartIndex(this.state.startIndex + 1)}>
-                            <DoubleArrowIcon/>
-                        </IconButton>
-                    </div>
-                </BodyItem>
-            </BodyContainer>
+            <div>
+                <div style={{
+                    "height": "100%",
+                    "display": "inline-grid",
+                    "justifyContent": "center",
+                    "alignContent": "center",
+                    "float": "left"
+                }}>
+                    <IconButton disabled={this.state.startIndex === 0} style={{"transform": "scale(-2)"}} onClick={() => this.setStartIndex(this.state.startIndex - 1)}>
+                        <DoubleArrowIcon/>
+                    </IconButton>
+                </div>
+                <BodyContainer>
+                    <BodyItem xs={12}>
+                        <BodyContainer>
+                            {
+                                this.props.data?.map((data, index) => {
+                                    if (index >= this.state.startIndex && index < this.state.startIndex + this.state.maxItemsToDisplay) {
+                                        //console.log("MAX", maxItemsToDisplay); 
+                                        return this.props.renderFunction(data, index);
+                                    }
+        
+                                    return undefined;
+                                })
+                            }
+                        </BodyContainer>
+                    </BodyItem>
+                </BodyContainer>
+                <div style={{
+                    "height": "100%",
+                    "display": "inline-grid",
+                    "justifyContent": "center",
+                    "alignContent": "center",
+                    "float": "right"
+                }}>
+                    <IconButton disabled={this.state.startIndex + this.state.maxItemsToDisplay >= this.props.data.length} style={{"transform": "scale(2)"}} onClick={() => this.setStartIndex(this.state.startIndex + 1)}>
+                        <DoubleArrowIcon/>
+                    </IconButton>
+                </div>
+            </div>
         );
     }
 }
