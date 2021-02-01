@@ -19,7 +19,7 @@ function App() {
               <Header>
                   <Grid container item justify="center" alignItems="center" xs={12} sm={12} md={3} style={{textAlign: "center"}}>
                     <img alt="" style={{ float: "left", width: "auto", maxWidth: "150px", height: "auto", minHeight: "75px"}} src="./kek_shield_icon.png" />
-                    <h1>K&EK Sports</h1>
+                    <h1>K&EK Sports Trophies</h1>
                   </Grid>
                   <NavBar links={{
                                     Home: { action: () => {
