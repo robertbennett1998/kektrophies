@@ -55,7 +55,7 @@ function TestimonialsView() {
                         <AddCircleIcon />
                       </IconButton>
                     </div>
-                    <HorizontalCarousell sizeToMaxItemsToDisplayMap={sizeToMaxItemsToDisplayMap} data={testimonials} renderFunction={(data, index) => <Testimonial testimonialData={data} index={index} />} />
+                    <HorizontalCarousell sizeToMaxItemsToDisplayMap={sizeToMaxItemsToDisplayMap} data={testimonials} renderFunction={(testimonialData, index) => <Testimonial key={`${testimonialData.firstName}-${testimonialData.lastName}-${index}`} testimonialData={testimonialData} index={index} />} />
                   </div>
                 );  
       }
