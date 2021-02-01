@@ -27,11 +27,8 @@ namespace kektrophies
         {
             if (!optionsBuilder.IsConfigured)
             {
-                #if DEBUG
-                    optionsBuilder.UseSqlServer(_configuration.GetConnectionString("kektrophies_db")); //local
-                #else 
-                    optionsBuilder.UseMySQL(_configuration.GetConnectionString("kektrophies_db"));
-                #endif
+                // optionsBuilder.UseSqlServer(_configuration.GetConnectionString("kektrophies_db_local"));
+                optionsBuilder.UseMySQL(_configuration.GetConnectionString("kektrophies_db"));
             }
         }
     }
