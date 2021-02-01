@@ -17,7 +17,7 @@ ReactDOM.render(
       <Helmet> 
         {/* {window.IsDebug ? <meta http-equiv="Content-Security-Policy" content="default-src *;  style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.facebook.com" /> : <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self' http://www.facebook.com" />}             */}
         <meta http-equiv="Content-Security-Policy" content="default-src *;  style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.facebook.com" />
-        <title>K&EK Trophies</title>
+        <title>K&EK Sports Trophies</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
