@@ -62,8 +62,7 @@ namespace kektrophies
             // #endif                        
             
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            // app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -83,6 +82,10 @@ namespace kektrophies
                     if (env.IsDevelopment())
                     {
                         spa.UseReactDevelopmentServer(npmScript: "start");
+                    }
+                    else
+                    {
+                        app.UseSpaStaticFiles();
                     }
                 });
             });
