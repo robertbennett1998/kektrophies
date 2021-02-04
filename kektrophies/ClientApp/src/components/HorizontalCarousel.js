@@ -66,7 +66,6 @@ export class HorizontalCarousel extends React.Component
     }
     
     render() {
-        console.log("HC RENDER", this.props.data, this.state)
         return (
             <BodyContainer>
                 <BodyItem xs={1}>
@@ -86,7 +85,6 @@ export class HorizontalCarousel extends React.Component
                         {
                             this.props.data?.map((data, index) => {
                                 if (index >= this.state.startIndex && index < this.state.startIndex + this.calculateMaxItemsToDisplay()) {
-                                    //console.log("MAX", maxItemsToDisplay); 
                                     return this.props.renderFunction(data, index);
                                 }
 
@@ -103,7 +101,7 @@ export class HorizontalCarousel extends React.Component
                         "alignContent": "center",
                         "float": "right"
                     }}>
-                        <IconButton hidden={this.state.startIndex + this.state.maxItemsToDisplay >= this.props.length} style={{"transform": "scale(2)"}} onClick={() => this.setStartIndex(this.state.startIndex + 1)}>
+                        <IconButton hidden={this.state.startIndex + this.calculateMaxItemsToDisplay() >= this.props.length} style={{"transform": "scale(2)"}} onClick={() => this.setStartIndex(this.state.startIndex + 1)}>
                             <DoubleArrowIcon/>
                         </IconButton>
                     </div>

@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import HorizontalCarousell from '../components/HorizontalCarousel';
-import Testimonial from '../components/Testimonial';
 import KekApi from '../KekApi';
-import { Button, TextField, IconButton } from '@material-ui/core';
-import BodyContainer from '../components/BodyContainer';
-import BodyItem from '../components/BodyItem';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import CancelIcon from '@material-ui/icons/Cancel';
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import NewTestimonialForm from "../components/NewTestimonialForm";
 
@@ -50,11 +43,8 @@ class TestimonialsView extends React.Component {
     }
 
     render() {
-        console.log(this.state.testimonials);
         if (!this.state.isCreatingNewTestimonial) {
             if (this.state.requestError === null) {
-                console.log("START TC RENDER")
-
                 return (
                     <TestimonialCarousel testimonials={this.state.testimonials} 
                                          sizeToMaxItemsToDisplayMap={
