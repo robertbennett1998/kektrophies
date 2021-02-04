@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import HorizontalCarousel from './HorizontalCarousel';
 import Testimonial from '../components/Testimonial';
 import { IconButton } from '@material-ui/core';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import KekApi from '../KekApi';
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import NewTestimonialForm from "../components/NewTestimonialForm";
