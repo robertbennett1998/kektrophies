@@ -12,6 +12,7 @@ import WelcomeView from './views/WelcomeView';
 import ServicesView from './views/ServicesView';
 import TestimonialsView from './views/TestimonialsView';
 import CatalogueView from './views/CatalogueView';
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 
 function App() {
   return (
@@ -46,16 +47,24 @@ function App() {
                                 }} />
                   <MediaBar icons={{
                                       facebook: {  
-                                        icon: () => <FacebookIcon />,
+                                        icon: () => <FacebookIcon  />,
                                         action: () => window.open("https://www.facebook.com/kektrophies/")
                                       },
-                                      phone: {  
-                                        icon: () => <PhoneIcon />,
+                                      mobile: {  
+                                        icon: () => <PhoneIphoneIcon />,
                                         action: () => {
                                                         var tel = document.createElement("a");
                                                         tel.href = "tel:07970 980811";
                                                         tel.click();
                                         }
+                                      },
+                                      landline: {
+                                          icon: () => <PhoneIcon />,
+                                          action: () => {
+                                              var tel = document.createElement("a");
+                                              tel.href = "tel:01482 212138";
+                                              tel.click();
+                                          }
                                       },
                                       email: {  
                                         icon: () => <EmailIcon />,
