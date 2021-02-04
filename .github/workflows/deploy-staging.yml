@@ -1,0 +1,43 @@
+# https://dev.to/kurtmkurtm/testing-net-core-apps-with-github-actions-3i76
+on: 
+  push:
+    branches:
+      - staging
+
+name: 🚀 Deploy Website on PR into staging
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: windows-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2.3.2
+      
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101    
+
+    - name: Publish
+      run: dotnet publish ./kektrophies/kektrophies.csproj -o ./publish -f netcoreapp3.1	-r win-x64 -c release -p:PublishReadyToRun=true --self-contained true 
+      
+    - name: Save the Published files
+      uses: actions/upload-artifact@v2
+      if: ${{always()}}
+      with:
+        name: 'publish'
+        path: ${{github.workspace}}/publish/
+      
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: ${{secrets.ftp_server}}
+        username: ${{secrets.ftp_staging_username}}
+        password: ${{secrets.ftp_staging_password}}
+        protocol: ftp
+        local-dir: ./publish/
+        exclude: web.config
+          - web.config
+          - Web.config
+          - appsettings.json 
+          - appsettings.Development.json

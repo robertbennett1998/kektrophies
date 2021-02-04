@@ -17,7 +17,6 @@ namespace kektrophies.Middleware
 
         public async Task Invoke(HttpContext httpContext)
         {
-            var endpoint = httpContext.Features.Get<IEndpointFeature>()?.Endpoint;
             try
             {
                 await _next(httpContext);

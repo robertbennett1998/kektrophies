@@ -5,13 +5,13 @@ import BodyItem from './BodyItem';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import withWidth from '@material-ui/core/withWidth';
 
-export class HorizontalCarousell extends React.Component
+export class HorizontalCarousel extends React.Component
 {
     constructor(props) {
         super(props);
         this.state = {
-            startIndex: 0,
-            maxItemsToDisplay: 0
+            startIndex: 0
+            // maxItemsToDisplay: 0
         }
     }
     
@@ -19,44 +19,49 @@ export class HorizontalCarousell extends React.Component
         if (this.props.data === null || this.props.data === undefined)
             return;
 
+        const maxToDisplay = this.calculateMaxItemsToDisplay();
+        
         if (index < 0)
             index = 0;
 
-        if (index > this.props.data.length - this.state.maxItemsToDisplay)
-            index = this.props.data.length - this.state.maxItemsToDisplay;
+        if (index > this.props.data.length - maxToDisplay)
+            index = this.props.data.length - maxToDisplay;
 
         this.setState({ 
             startIndex: index
         });
     }
 
-    setMaxItemsToDisplay(maxItems) {
-        this.setStartIndex(this.state.startIndex);
-        this.setState({
-            maxItemsToDisplay: maxItems
-        });
+    calculateMaxItemsToDisplay() {
+        let maxToDisplay = 0;
+        let exitOnSet = false;
+        const sizeKeys = ["xl", "lg", "md", "sm", "xs"];
+        
+        for (const sizeKey of sizeKeys) {
+            if (sizeKey === this.props.width)
+                exitOnSet = true;
+
+            if (this.props.sizeToMaxItemsToDisplayMap[sizeKey] !== undefined) {
+                maxToDisplay = this.props.sizeToMaxItemsToDisplayMap[sizeKey];
+
+                if (exitOnSet)
+                    break;
+            }
+        }
+        
+        return maxToDisplay;
     }
+    
+    // setMaxItemsToDisplay(maxItems) {
+    //     this.setStartIndex(this.state.startIndex);
+    //     this.setState({
+    //         maxItemsToDisplay: maxItems
+    //     });
+    // }
     
     componentDidUpdate(prevProps) {
         if (prevProps.data !== this.props.data || prevProps.width !== this.props.width) {
-            let maxToDisplay = 0;
-            let exitOnSet = false;
-            const sizeKeys = ["xl", "lg", "md", "sm", "xs"];
-
-            console.log("Width", this.props.width);
-            for (const sizeKey of sizeKeys) {
-                if (sizeKey === this.props.width)
-                    exitOnSet = true;
-
-                if (this.props.sizeToMaxItemsToDisplayMap[sizeKey] !== undefined) {
-                    maxToDisplay = this.props.sizeToMaxItemsToDisplayMap[sizeKey];
-
-                    if (exitOnSet)
-                        break;
-                }
-            }
-
-            this.setMaxItemsToDisplay(maxToDisplay);
+            this.setStartIndex(this.state.startIndex);
         }
     }
     
@@ -70,7 +75,7 @@ export class HorizontalCarousell extends React.Component
                         "justifyContent": "center",
                         "alignContent": "center"
                     }}>
-                        <IconButton style={{"transform": "scale(-2)"}} onClick={() => this.setStartIndex(this.state.startIndex - 1)}>
+                        <IconButton hidden={this.state.startIndex === 0} style={{"transform": "scale(-2)"}} onClick={() => this.setStartIndex(this.state.startIndex - 1)}>
                             <DoubleArrowIcon/>
                         </IconButton>
                     </div>
@@ -79,11 +84,10 @@ export class HorizontalCarousell extends React.Component
                     <BodyContainer>
                         {
                             this.props.data?.map((data, index) => {
-                                if (index >= this.state.startIndex && index < this.state.startIndex + this.state.maxItemsToDisplay) {
-                                    //console.log("MAX", maxItemsToDisplay); 
+                                if (index >= this.state.startIndex && index < this.state.startIndex + this.calculateMaxItemsToDisplay()) {
                                     return this.props.renderFunction(data, index);
                                 }
-    
+
                                 return undefined;
                             })
                         }
@@ -97,7 +101,7 @@ export class HorizontalCarousell extends React.Component
                         "alignContent": "center",
                         "float": "right"
                     }}>
-                        <IconButton style={{"transform": "scale(2)"}} onClick={() => this.setStartIndex(this.state.startIndex + 1)}>
+                        <IconButton hidden={this.state.startIndex + this.calculateMaxItemsToDisplay() >= this.props.length} style={{"transform": "scale(2)"}} onClick={() => this.setStartIndex(this.state.startIndex + 1)}>
                             <DoubleArrowIcon/>
                         </IconButton>
                     </div>
@@ -107,4 +111,4 @@ export class HorizontalCarousell extends React.Component
     }
 }
 
-export default withWidth()(HorizontalCarousell);
+export default withWidth()(HorizontalCarousel);
