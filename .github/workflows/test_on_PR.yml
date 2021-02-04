@@ -2,7 +2,7 @@ name: Run Unit Tests on PR
 
 on:
   pull_request:
-    branches: [ master, ci_testing ]
+    branches: [ master, staging, ci_testing ]
 
 jobs:
   build:
