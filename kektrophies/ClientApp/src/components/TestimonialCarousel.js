@@ -1,12 +1,8 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React from 'react';
 import HorizontalCarousel from './HorizontalCarousel';
 import Testimonial from '../components/Testimonial';
-import { Button, TextField, IconButton } from '@material-ui/core';
-import BodyContainer from '../components/BodyContainer';
-import BodyItem from '../components/BodyItem';
+import { IconButton } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import CancelIcon from '@material-ui/icons/Cancel';
-import KekApi from "../KekApi";
 
 const TestimonialCarousel = (props) => {
     return (

@@ -1,12 +1,8 @@
-﻿import React, { useEffect, useState } from 'react';
-import HorizontalCarousell from './HorizontalCarousel';
-import Testimonial from '../components/Testimonial';
+﻿import React, { useState } from 'react';
 import { Button, TextField, IconButton } from '@material-ui/core';
 import BodyContainer from '../components/BodyContainer';
 import BodyItem from '../components/BodyItem';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
-import KekApi from "../KekApi";
 
 const NewTestimonialForm = (props) => {
     const [code, setCode] = useState("");
