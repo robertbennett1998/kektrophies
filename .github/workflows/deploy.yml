@@ -3,7 +3,8 @@ on:
   push:
     branches:
       - master
-
+  workflow_dispatch:
+  
 name: 🚀 Deploy Website on PR into master
 jobs:
   web-deploy:
