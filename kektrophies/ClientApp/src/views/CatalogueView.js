@@ -24,7 +24,7 @@ function CatalogueView() {
     return (
                 <div id="catalogue_view">
                     <h1>Catalogue</h1>
-                    <iframe ref={catalogRef} title={"Catalog_2021"} frameborder="0" src="https://online.flippingbook.com/view/72664/" width="100%" height={catalogHeight + "px"} style={{ maxHeight: catalogMaxHeight + "px"}} />
+                    <iframe ref={catalogRef} title={"Catalog_2021"} frameborder="0" src="https://online.flippingbook.com/view/556704999/" width="100%" height={catalogHeight + "px"} style={{ maxHeight: catalogMaxHeight + "px"}} />
                 </div>
             );
 }
